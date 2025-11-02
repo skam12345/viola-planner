@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Call Netlify Function
         run: |
-          curl -X POST https://plannerappfront.netlify.app/.netlify/functions/saved_planner
+          curl -X POST https://viola-planner.netlify.app/.netlify/functions/saved_planner
