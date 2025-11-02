@@ -2,7 +2,7 @@ name: Run Netlify Function Daily
 
 on:
   schedule:
-    - cron: "36 1 * * *" # UTC 기준 매일 0시 실행 (한국시간 오전 9시)
+    - cron: "37 1 * * *" # UTC 기준 매일 0시 실행 (한국시간 오전 9시)
   workflow_dispatch: # 수동 실행 버튼
 
 jobs:
@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Call Netlify Function
         run: |
-          curl -X POST https://viola-planner.netlify.app/.netlify/functions/saved_planner
+          curl -X POST https://viola-planner.netlify.app/.netlify/functions/save_planner
