@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@layer utilities {
+
+  @keyframes swirlEffect {
+    0% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(0) rotate(720deg);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1
+    }
+  }
+
+  .inner-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -3px;
+  }
+  .header-shape {
+    -webkit-box-shadow: 0px 9px 9px -4px #000000; 
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);   
+  }
+
+  .bottom-shape {
+    -webkit-box-shadow: 0px -9px 9px -4px #000000; 
+    box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.5);
+  }
+
+
+  .relative-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.3s ease;
+  }
+
+  .relactive-item:active {
+    transform: scale(0.95);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+    filter: brightness(1.2);
+  }
+
+  .relative-item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(125,40,100,0.9) 0%, rgba(255,255,255,0) 80%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  }
+
+  .relative-item:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    animation: sparkle 0.5s ease-out forwards;
+  }
+
+  .relative-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 12px;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .relactive-item:active::before {
+    opacity: 1;
+    animation: flash 0.3s ease-out forwards;
+  }
+
+  .active-item {
+    background-color: #00A3D6C
+  }
+  .flex-remain {
+    width: 100%;
+    flex: 1;
+  }
+  
+  .bg-black-opacity-50 {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .swirlEffect {
+    animation-name: swirlEffect;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+  }
+
+   .swirlEffect-reverse {
+    animation-name: swirlEffect;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+  }
+  
+  .inset-vertical-line {
+    height: 80%;
+    width: 2px;
+    background: #e6edf3; /* 베이스 색 */
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.06);
+  }
+  .inset-horizontal-line {
+      height: 2px;
+      width: 90%;
+      background: #e6edf3; /* 베이스 색 */
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.06);
+  }
+}
+
+#root, html, body {
+  height: rgba(125,40,100,0.5);
+}
